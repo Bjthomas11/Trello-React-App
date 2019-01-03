@@ -2,6 +2,13 @@ language: node_js
 node_js: node
 cache:
   directories:
-    - node_modules
+  - node_modules
 env:
-  - CI=true
+- CI=true
+deploy:
+  provider: heroku
+  api_key:
+    secure: ITV5CU+X2t5hCIpjV5I65sVr06IwHoq3BzUGNAae4qNjWPCmCp27eijdEeI/5HgkvO1iYu8Qxx9AI4dKAESrPniVBY6UebqPw2HJzCg/uyrxZqyxsoncBigDMO3FNTbAwClSBtGstWBdsGxfADHrAZEopMeD3eJZeAJGmCAZwG/of96xzJ9R0WqCxvYrxX66p/41vK62RKzY2YZw5l7YZXZINsNFxwvc2nJv7a+/oYlNif5bokn6qy8v/zf/9ildYf/d9yqTdZsyhDE+dYHscwOaVS6+eeB7PXsBds0XbDcIom4Duv2MUOWo62K6T/pVNDpCFg/S5auM+62xp+OJm5PR4ksM0at4CNIdV0R8zw0LTayCIwBs/L7EC9vJHUFiMjjQj1fs9+D1gim9dggmjRt853ywPq9dZWikx0VsTV7GmZeqRF3wrxJLKjunKWMeHf9c2NINed+d2qtwnxnaoqP/+dQA7HERLj+cDDIjzPvJjQS5yKubzEw8f1Wab72K2D84zQgOWu/ra7UxNJOJ4eu7zl/EDIMSgpicE98REetv9GNYqy2EUzdQQj3+i8y2heHcvM+/E7szhVGd+32SJD78YTMDpWFlKULZBJZvTR5emF9S/MOY9i0Ugw5Doktg0CrfXeHY9cFYlJerk7UaEa+AZ721F4N7u9RfFHBFs3o=
+  app: vast-sea-92431
+  on:
+    repo: Bjthomas11/Trello-React-App
