@@ -1,9 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Board from './components/board';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import Board from "./components/board";
+import store from "./store";
+import "./index.css";
 
 ReactDOM.render(
-  <Board />,
-  document.getElementById('root')
+  <Provider store={store}>
+    <Board />
+  </Provider>,
+  document.querySelector("#root")
 );

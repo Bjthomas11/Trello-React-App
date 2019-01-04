@@ -1,51 +1,42 @@
-import React from 'react';
+import React from "react";
+import List from "./list";
+import AddForm from "./add-form";
+import { connect } from "react-redux";
+import { addList } from "../actions";
+import "./board.css";
 
-import List from './list';
-import AddForm from './add-form';
+export class Board extends React.Component {
+  addList(title) {
+    this.props.dispatch(addList(title));
+  }
 
-import './board.css';
+  render() {
+    const lists = this.props.lists.map((list, index) => (
+      <li className="list-wrapper" key={index}>
+        <List index={index} {...list} />
+      </li>
+    ));
 
-export default class Board extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            lists: []
-        };
-
-        this.addList = this.addList.bind(this);
-    }
-
-    addList(title) {
-        this.setState({
-            lists: [...this.state.lists, {title}]
-        });
-    }
-
-    render() {
-        const lists = this.state.lists.map((list, index) => (
-            <li className="list-wrapper" key={index}>
-                <List {...list} />
-            </li>
-        ));
-
-        return (
-            <div className="board">
-                <h2>{this.props.title}</h2>
-                <ul className="lists">
-                    {lists}
-                    <li className="add-list-wrapper">
-                        <AddForm
-                            type="list"
-                            onAdd={text => this.addList(text)}
-                        />
-                    </li>
-                </ul>
-            </div>
-        );
-    }
+    return (
+      <div className="board">
+        <h2>Example board</h2>
+        <ul className="lists">
+          {lists}
+          <li className="add-list-wrapper">
+            <AddForm type="list" onAdd={title => this.addList(title)} />
+          </li>
+        </ul>
+      </div>
+    );
+  }
 }
 
 Board.defaultProps = {
-    title: 'Board'
+  title: "Board"
 };
+
+const mapStateToProps = state => ({
+  lists: state.lists
+});
+
+export default connect(mapStateToProps)(Board);
